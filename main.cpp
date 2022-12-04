@@ -51,24 +51,20 @@ int main() {
     randWeightGenerator(weightMatrix, numOfNodes);
     printMatrix(weightMatrix, numOfNodes);
 
+    // Create Pair
+    pair<int*, int*> dist_and_prev;
+    dist_and_prev.first = new int[numOfNodes];
+    dist_and_prev.second = new int[numOfNodes];
 
-
+    
+    // Perform Dijkstra's Algorithm
+    
     // Necessary Arrays
-    int *dist = new int[numOfNodes];
-    int *prev = new int[numOfNodes];
+    
+    
 
     // Build arrays
 
-
-    // Deleting Memory
-    delete dist;
-    dist = nullptr;
-    delete prev;
-    prev = nullptr;
-    for(int i = 0; i < numOfNodes; i++) {
-        delete weightMatrix[i];
-        weightMatrix = nullptr;
-    }
 
     delete weightMatrix;
     weightMatrix = nullptr;
