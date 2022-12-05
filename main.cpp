@@ -4,6 +4,7 @@
 #include <time.h>
 
 #include "dijkstras.h"
+#include "fw.h"
 
 using namespace std;
 
@@ -65,9 +66,10 @@ int main() {
     
     // Does it work?
     
-    // Perform Floyd-Wallerman
+    // Perform Floyd-Warshall
+    int** shortestPathMatrix = allPairShortestPath(weightMatrix, numOfNodes);
+    printMatrix(shortestPathMatrix, numOfNodes);
     
-
     // Build arrays
 
 
