@@ -19,6 +19,14 @@ void printMatrix(int **matrix, int n) {
     cout << endl;
 }
 
+void deleteMatrix(int **matrix, int n) {
+    for(int i = 0; i < n; i++) {
+        delete matrix[i];
+    }
+
+    delete matrix;
+}
+
 void randWeightGenerator(int **matrix, int n) {
     for(int i = 0; i < n; i++) {
         matrix[i][i] = 0;
@@ -62,24 +70,26 @@ int main() {
 
     
     // Perform Dijkstra's Algorithm
-    dijkstraSP(weightMatrix, dist_and_prev, numOfNodes, 0);
+    for(int i = 0; i < numOfNodes; i++) {
+        cout << "Starting point: " << i << endl;
+        dijkstraSP(weightMatrix, dist_and_prev, numOfNodes, i);
+    }
+    
     
     // Does it work?
     
     // Perform Floyd-Warshall
     int** shortestPathMatrix = allPairShortestPath(weightMatrix, numOfNodes);
     printMatrix(shortestPathMatrix, numOfNodes);
-    
-    // Build arrays
-
 
     // delete the pointers
     delete dist_and_prev.first;
     dist_and_prev.first = nullptr;
     delete dist_and_prev.second;
     dist_and_prev.second = nullptr;
-    delete weightMatrix;
-    weightMatrix = nullptr;
+
+    deleteMatrix(weightMatrix, numOfNodes);
+    deleteMatrix(shortestPathMatrix, numOfNodes);
 
     cout << endl;
     system("Pause");

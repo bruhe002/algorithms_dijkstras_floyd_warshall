@@ -56,7 +56,7 @@ void dijkstraSP(int **graph, pair<int*, int*> returnArrays, int numOfNodes, int 
     mark[startingNode] = 1;
 
     for(int nodesLeft = 1; nodesLeft < numOfNodes; nodesLeft++) {
-        printPair(returnArrays, numOfNodes);
+        
         int lowestDistNode = lowestDistanceIndex(returnArrays.first, mark, numOfNodes);
         mark[lowestDistNode] = 1;
         for(int i = 0; i < numOfNodes; i++) {
@@ -65,6 +65,8 @@ void dijkstraSP(int **graph, pair<int*, int*> returnArrays, int numOfNodes, int 
             }
         }
     }
+
+    printPair(returnArrays, numOfNodes);
 }
 
  
