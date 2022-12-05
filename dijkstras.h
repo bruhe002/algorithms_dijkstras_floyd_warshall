@@ -5,11 +5,13 @@
 
 using namespace std;
 
-void relax(const int** graph, int* dist, int* prev, int nodeToConnect, int nodeDestination);
+void relax(int** graph, int* dist, int* prev, int nodeToConnect, int nodeDestination);
 
-int lowestDistanceIndex(const int* dist, const int* mark, int numOfNodes);
+int lowestDistanceIndex(int* dist, int* mark, int numOfNodes);
 
-void dijkstraSP(const int **graph, pair<int*, int*> returnArrays, int numOfNodes, int startingNode);
+void printArray(pair<int*, int*> dist_prev, int numOfNodes);
+
+void dijkstraSP(int **graph, pair<int*, int*> returnArrays, int numOfNodes, int startingNode);
 
 
 

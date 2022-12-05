@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <time.h>
 
+#include "dijkstras.h"
 
 using namespace std;
 
@@ -13,6 +14,8 @@ void printMatrix(int **matrix, int n) {
         }
         cout << endl;
     }
+
+    cout << endl;
 }
 
 void randWeightGenerator(int **matrix, int n) {
@@ -58,14 +61,21 @@ int main() {
 
     
     // Perform Dijkstra's Algorithm
+    dijkstraSP(weightMatrix, dist_and_prev, numOfNodes, 0);
     
-    // Necessary Arrays
+    // Does it work?
     
+    // Perform Floyd-Wallerman
     
 
     // Build arrays
 
 
+    // delete the pointers
+    delete dist_and_prev.first;
+    dist_and_prev.first = nullptr;
+    delete dist_and_prev.second;
+    dist_and_prev.second = nullptr;
     delete weightMatrix;
     weightMatrix = nullptr;
 
