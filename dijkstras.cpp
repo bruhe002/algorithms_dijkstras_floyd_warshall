@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include <utility>
 
 #include "dijkstras.h"
@@ -67,7 +68,29 @@ void dijkstraSP(int **graph, pair<int*, int*> returnArrays, int numOfNodes, int 
         //printPair(returnArrays, numOfNodes);
     }
 
-    //printPair(returnArrays, numOfNodes);
+    printPair(returnArrays, numOfNodes);
+
+
+    // Printing the shortest Path for all verticies with respect to startingNode
+    for(int i = 0; i < numOfNodes; i++) {
+        int tempIdx = i; 
+        string path = "";
+        int pathCost = 0;
+        while (tempIdx != startingNode) { 
+            if(tempIdx == i) {
+                path = path +  + " -> " + to_string(tempIdx);
+            } else {
+                path = " -> " + to_string(tempIdx) + path;
+            }       
+            
+            pathCost += returnArrays.first[tempIdx]; 
+            tempIdx = returnArrays.second[tempIdx];
+        }
+
+        cout << startingNode << path << " = " << pathCost << endl;
+        
+    }
+    cout << endl;
 }
 
  

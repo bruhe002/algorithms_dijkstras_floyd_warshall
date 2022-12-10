@@ -36,8 +36,10 @@ void randWeightGenerator(int **matrix, int n) {
     for(int i = 0; i < n; i++) {
         for(int j = 0; j < n; j++) {
             int weight = (rand() % 10) + 1;
-            if(weight >= 8) {
-                weight = 9999;
+            if(weight >= 8 && i > 0 && j >0) {
+                if(matrix[i][j - 1] != 9999 && matrix[i - 1][j] != 9999)
+                    weight = 9999;
+                
             }
             if(i != j) {
                 matrix[i][j] = weight;
@@ -73,7 +75,7 @@ int main() {
     // Perform Dijkstra's Algorithm
     auto begin = chrono::high_resolution_clock::now();
     for(int i = 0; i < numOfNodes; i++) {
-        // cout << "Starting point: " << i << endl;
+        cout << "Starting point: " << i << endl;
         dijkstraSP(weightMatrix, dist_and_prev, numOfNodes, i);
     }
     auto end = chrono::high_resolution_clock::now();
