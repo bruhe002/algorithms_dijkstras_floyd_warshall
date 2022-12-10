@@ -64,9 +64,10 @@ void dijkstraSP(int **graph, pair<int*, int*> returnArrays, int numOfNodes, int 
                 relax(graph, returnArrays.first, returnArrays.second, lowestDistNode, i);
             }
         }
+        //printPair(returnArrays, numOfNodes);
     }
 
-    printPair(returnArrays, numOfNodes);
+    //printPair(returnArrays, numOfNodes);
 }
 
  

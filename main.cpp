@@ -2,6 +2,7 @@
 #include <iomanip>
 #include <cstdlib>
 #include <time.h>
+#include <chrono>
 
 #include "dijkstras.h"
 #include "fw.h"
@@ -70,17 +71,28 @@ int main() {
 
     
     // Perform Dijkstra's Algorithm
+    auto begin = chrono::high_resolution_clock::now();
     for(int i = 0; i < numOfNodes; i++) {
-        cout << "Starting point: " << i << endl;
+        // cout << "Starting point: " << i << endl;
         dijkstraSP(weightMatrix, dist_and_prev, numOfNodes, i);
     }
+    auto end = chrono::high_resolution_clock::now();
+
+    auto elapsed = chrono::duration_cast<chrono::microseconds>(end - begin);
+
+    cout << "Dijkstra Elapsed Time: " << elapsed.count() << endl << endl;
+
     
     
     // Does it work?
     
     // Perform Floyd-Warshall
+    auto fw_begin = chrono::high_resolution_clock::now();
     int** shortestPathMatrix = allPairShortestPath(weightMatrix, numOfNodes);
+    auto fw_end = chrono::high_resolution_clock::now();
+    auto fw_elapsed = chrono::duration_cast<chrono::microseconds>(fw_end - fw_begin);
     printMatrix(shortestPathMatrix, numOfNodes);
+    cout << "Floyd-Warshall Elapsed Time: " << fw_elapsed.count() << endl << endl;
 
     // delete the pointers
     delete dist_and_prev.first;

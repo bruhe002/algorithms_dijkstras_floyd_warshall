@@ -16,7 +16,7 @@ int** allPairShortestPath(int** graph, int numOfNodes) {
         for(int i = 0; i < numOfNodes; i++) {
             for(int j = 0; j < numOfNodes; j++) {
                 if(copyGraph[i][k] + copyGraph[k][j] < copyGraph[i][j])
-                copyGraph[i][j] = copyGraph[i][k] + copyGraph[k][j];
+                    copyGraph[i][j] = copyGraph[i][k] + copyGraph[k][j];
             }
         }
     }
